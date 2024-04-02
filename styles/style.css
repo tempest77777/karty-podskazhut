@@ -1,3 +1,11 @@
+:root {
+  --header-font-family: "STIX Two Text", sans-serif;
+  --main-font: Raleway, sans-serif;
+  --bg-color: #f3efec;
+  --text-color: #312a4e;
+  --accent-color: #ffab6b;
+}
+
 *,
 *::before,
 *::after {
@@ -16,24 +24,16 @@ figure {
   margin: 0;
 }
 
-:root {
-  --header-font-family: "STIX Two Text", sans-serif;
-  --main-font: Raleway, sans-serif;
-  --bg-color: #f3efec;
-  --text-color: #312a4e;
-  --accent-color: #ffab6b;
+.page {
+  font-family: var(--main-font);
+  color: var(--text-color);
+  background-color: var(--bg-color, #f3efec);
 }
 
 .theme_dark {
   --bg-color: #171717;
   --text-color: #b3b3b3;
   --accent-color: transparent;
-}
-
-.page {
-  font-family: var(--main-font);
-  color: #312a4e;
-  background-color: #f3efec;
 }
 
 .header {
@@ -64,33 +64,27 @@ figure {
   padding-right: 5vw;
 }
 
-/* Стили для текстовых блоков */
 .content__text-block {
-  font-size: 16px; /* Пример, требуется проверка с макетом */
+  font-size: 16px;
 }
 
-/* Стили для абзацев в текстовых блоках */
 .content__paragraph {
   margin-bottom: 1.5em;
 }
 
-/* Стили для ссылок */
 a {
-  color: inherit; /* Наследовать цвет от родителя */
-  /* text-decoration: none; */
+  color: inherit;
 }
 
-/* Выбор всех .content_paragraph, кроме последнего в .content_text-block */
 .content__text-block .content__paragraph:not(:last-child) {
   margin-bottom: 1.5em;
 }
 
-/* Стили для цитат */
 .content__blockquote {
   width: 75%;
   margin-bottom: 1.5em;
 }
-/* Стили для списка .content__list */
+
 .content__list {
   list-style-type: none;
   padding-inline-start: 40px;
@@ -102,13 +96,11 @@ a {
   margin-bottom: 2.5%;
 }
 
-
 .content__list-item {
   position: relative;
-  padding-left: 20px; 
-  margin-bottom: 10px; 
+  padding-left: 20px;
+  margin-bottom: 10px;
 }
-
 
 .content__list-item::after {
   content: "";
@@ -126,7 +118,7 @@ a {
 }
 
 .header__theme-button {
-  color: #312a4e;
+  color: var(--text-color);
   font-family: inherit;
   font-size: 18px;
   background-color: transparent;
@@ -143,7 +135,7 @@ a {
 .header__theme-button_is-active::after {
   content: "";
   position: absolute;
-  background-color: #ffab6b;
+  background-color: var(--accent-color, #ffab6b);
   bottom: 3px;
   left: -3px;
   height: 0.3em;
@@ -185,7 +177,7 @@ a {
 .colored-text::after {
   content: "";
   position: absolute;
-  background-color: #ffab6b;
+  background-color: var(--accent-color, #ffab6b);
   bottom: 10px;
   left: -3px;
   height: 0.2em;
@@ -196,7 +188,7 @@ a {
   font-size: 18px;
 }
 .content__card {
-  border: 1px solid #312a4e;
+  border: 1px solid var(--text-color);
   margin-top: 7%;
   display: flex;
   justify-content: center;
@@ -224,13 +216,25 @@ a {
   left: 15px;
 }
 
+.theme_dark .content__item::before {
+  background-image: url(../images/marker-dark.svg);
+}
+
+.theme_dark .header__theme-button_is-active::after {
+  background-image: url(../images/pattern.svg);
+}
+
+.theme_dark .colored-text::after {
+  background-image: url(../images/pattern.svg);
+}
+
 .footer {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 10%;
-  border-top: 1px solid #312a4e;
-  padding:2.5% 0 ;
+  border-top: 1px solid var(--text-color);
+  padding: 2.5% 0;
 }
 .footer__copyright {
   font-family: Raleway, sans-serif;
@@ -239,10 +243,20 @@ a {
 }
 
 .content__text-block_type_first-lettered > p:first-child::first-letter {
-  background-color: #ffab6b;
+  background-color: var(--accent-color, #ffab6b);
   font-size: 30px;
   font-weight: 700;
   line-height: normal;
   padding: 0 4px;
   margin-left: 1px;
+}
+
+.theme_dark
+  .content__text-block_type_first-lettered
+  > p:first-child::first-letter {
+  border: 1px var(--text-color, #b3b3b3) solid;
+}
+
+.header__theme-button:disabled {
+  pointer-events: none;
 }
