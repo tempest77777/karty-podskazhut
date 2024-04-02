@@ -260,3 +260,16 @@ a {
 .header__theme-button:disabled {
   pointer-events: none;
 }
+
+.content__figure {
+  position: relative;
+  left: calc(-5vw);
+  width: calc(100% + 2* 5vw);
+  margin-block: 7%;
+}
+
+.content__img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
